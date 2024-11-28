@@ -35,7 +35,7 @@ def create_user_item(db: Session, item: schemas.ItemCreate, user_id: int):
     return db_item
 
 def get_phone_by_brand_model(db: Session, brand: str, model: str):
-    return db.query( models.Phone ).filter( models.Phone.Model == model and models.Phone.Brand== brand)
+    return db.query( models.Phone ).filter( models.Phone.model == model and models.Phone.brand== brand)
 
 def add_phone(db: Session, phone: schemas.PhoneCreate):
     db_phone = models.Phone(**phone.model_dump())

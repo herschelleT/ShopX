@@ -1,29 +1,20 @@
-// reducers/itemReducer.js
-const initialState = {
-  selectedItems: [],
-  userInfo: null, // Initialize userInfo to null
-};
+// userSlice.js
+import { createSlice } from '@reduxjs/toolkit';
 
-const itemReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_ITEM":
-      return {
-        ...state,
-        selectedItems: [...state.selectedItems, action.payload],
-      };
-    case "LOGIN":
-      return {
-        ...state,
-        userInfo: action.payload, // Update userInfo with the user's information upon login
-      };
-    case "LOGOUT":
-      return {
-        ...state,
-        userInfo: null, // Clear userInfo upon logout
-      };
-    default:
-      return state;
-  }
-};
+const userSlice = createSlice({
+  name: 'user',
+  initialState: {
+    userInfo: null,  // Initial state where user info is empty
+  },
+  reducers: {
+    setUserInfo: (state, action) => {
+      state.userInfo = action.payload;
+    },
+    clearUserInfo: (state) => {
+      state.userInfo = null;
+    },
+  },
+});
 
-export default itemReducer;
+export const { setUserInfo, clearUserInfo } = userSlice.actions;
+export default userSlice.reducer;

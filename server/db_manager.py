@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-SQLALCHEMY_DATABASE_URL = "mariadb+mariadbconnector://root:123@127.0.0.1:3306/shop"
+SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:1234@127.0.0.1:5432/ShopX"
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
     # , connect_args={"check_same_thread": False

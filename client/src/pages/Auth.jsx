@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { setUserInfo, clearUserInfo } from "../store/reducers";
 
 const SignUpLogin = () => {
   const dispatch = useDispatch();
@@ -28,10 +29,7 @@ const SignUpLogin = () => {
       .post(`/login`, { email: email, password: password })
       .then((res) => {
         console.log(res);
-        dispatch({
-          type: "LOGIN",
-          payload: res,
-        });
+        dispatch(setUserInfo(res.data));
         navigate("/home");
 
         console.log("Logging in...");

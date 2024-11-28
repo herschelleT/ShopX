@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import TopBar from "../components/Navbar";
 import Shop from "../components/Shop";
 import Cart from "../components/Cart.jsx";
+import Dashboard from "../components/Dashboard.jsx";
 import { Provider } from "react-redux";
 import store from "../store/index.js";
 
@@ -13,23 +14,23 @@ function Home() {
   const RenderTab = () => {
     if (tab == "Shop") {
       return (
-        <Provider store={store}>
-          <Shop />
-        </Provider>
+          <Shop updateTab={setTab}/>
       );
-    } else if (tab == "Cart") {
+    } else if (tab == "Wishlist") {
       return (
-        <Provider store={store}>
           <Cart />
-        </Provider>
       );
     } else if (tab == "Settings") {
       return;
+    } else if (tab == "Admin") {
+      return (
+        <Dashboard />
+      )
     }
   };
   return (
     <>
-      <div className="h-screen flex flex-col items-center bg-gray-800 h-full">
+      <div className="flex flex-col items-center bg-gray-800 min-h-screen">
         <TopBar updateTab={setTab} />
         <RenderTab />
       </div>
